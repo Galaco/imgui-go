@@ -417,3 +417,28 @@ IggBool iggIsKeyPressed(int key)
 {
    return ImGui::IsKeyPressed(key);
 }
+
+IggBool iggBeginTabBar(char const *name, int flags)
+{
+   return ImGui::BeginTabBar(name, flags);
+}
+
+void iggEndTabBar(void)
+{
+   return ImGui::EndTabBar(key);
+}
+
+IggBool iggBeginTabItem(char const *label, IggBool *open, int flags)
+{
+   return ImGui::BeginTabItem(label, open, flags);
+}
+
+void iggEndTabItem(void)
+{
+   return ImGui::EndTabItem(key);
+}
+
+void iggSetTabItemClosed(char const *label)
+{
+   return ImGui::SetTabItemClosed(label);
+}

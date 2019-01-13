@@ -658,3 +658,40 @@ func IsItemHovered() bool {
 func IsKeyPressed(key int) bool {
 	return C.iggIsKeyPressed(C.int(key)) != 0
 }
+
+// BeginTabBar calls BeginTabBarV(name, TabBarFlagsDefault)
+func BeginTabBar(name string) bool {
+	return BeginTabBarV(name, TabBarFlagsDefault)
+}
+
+func BeginTabBarV(name string, flags int) bool {
+	nameArg, nameFin := wrapString(name)
+	defer nameFin()
+	return C.iggBeginTabBar(nameArg, C.int(flags)) != 0
+}
+
+func EndTabBar() {
+	C.iggEndTabBar()
+}
+
+func BeginTabItem(label string) bool {
+	return BeginTabItemV(label, nil, TabItemFlagsDefault)
+}
+
+func BeginTabItemV(label string, open *bool, flags int) bool {
+	labelArg, labelFin := wrapString(label)
+	defer labelFin()
+	openArg, openFin := wrapBool(open)
+	defer openFin()
+	return C.iggBeginTabItem(labelArg, openArg, C.int(flags)) != 0
+}
+
+func EndTabItem() {
+	C.iggEndTabItem()
+}
+
+func SetTabItemClosed(label string) {
+	labelArg, labelFin := wrapString(label)
+	defer labelFin()
+	C.iggSetTabItemClosed(labelArg)
+}

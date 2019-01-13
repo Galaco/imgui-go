@@ -111,6 +111,12 @@ extern IggBool  iggIsItemHovered(int flags);
 
 extern IggBool iggIsKeyPressed(int key);
 
+extern IggBool iggBeginTabBar(char const *name, int flags);
+extern void iggEndTabBar(void);
+extern IggBool iggBeginTabItem(char const *label, IggBool *open, int flags);
+extern void iggEndTabItem(void);
+extern void iggSetTabItemClosed(char const *label);
+
 #ifdef __cplusplus
 }
 #endif
